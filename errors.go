@@ -6,10 +6,10 @@ import (
 	"runtime"
 )
 
-type ErrorCode int32
+type Code int32
 
 type Error struct {
-	Code     ErrorCode
+	Code     Code
 	Message  string
 	Metadata []any
 	frame    *runtime.Frame
@@ -34,7 +34,7 @@ func errorFrame() *runtime.Frame {
 	return &f
 }
 
-func New(err error, code ErrorCode, metadata ...any) *Error {
+func New(err error, code Code, metadata ...any) *Error {
 	if err == nil {
 		return nil
 	}
